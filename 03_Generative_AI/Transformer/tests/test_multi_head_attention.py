@@ -3,7 +3,7 @@ import torch
 from src.attention.multi_head_attention import MultiHeadAttention
 
 
-def test_split_heads():
+def test_split_and_combine_heads():
 
     batch_size = 2
     sequence_length = 5
@@ -21,10 +21,14 @@ def test_split_heads():
         d_model,
     )
 
-    output = attention._split_heads(x)
+    split = attention._split_heads(x)
 
-    print(output.shape)
+    combined = attention._combine_heads(split)
+
+    print("Original :", x.shape)
+    print("Split    :", split.shape)
+    print("Combined :", combined.shape)
 
 
 if __name__ == "__main__":
-    test_split_heads()
+    test_split_and_combine_heads()
