@@ -25,3 +25,16 @@ The goal is to understand each component of the architecture by implementing it 
 ## Project Status
 
 🚧 In Progress
+
+## Progress
+
+- [x] Token Embedding Layer
+- [ ] Positional Encoding
+- [ ] Scaled Dot-Product Attention
+- [ ] Multi-Head Attention
+- [ ] Feed Forward Network
+- [ ] Layer Normalization
+- [ ] Residual Connections
+- [ ] Encoder
+- [ ] Decoder
+- [ ] Complete Transformer
