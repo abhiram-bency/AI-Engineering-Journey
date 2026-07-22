@@ -1,4 +1,4 @@
-from src.embedding import TokenEmbedding
+from src.layers.embedding import TokenEmbedding
 import torch
 
 model = TokenEmbedding(

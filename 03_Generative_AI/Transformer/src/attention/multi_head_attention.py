@@ -146,3 +146,63 @@ class MultiHeadAttention(nn.Module):
         )
 
         return tensor
+    
+    def forward(
+        self,
+        query: Tensor,
+        key: Tensor,
+        value: Tensor,
+        mask: Tensor | None = None,
+    ) -> tuple[Tensor, Tensor]:
+        """
+        Compute Multi-Head Attention.
+
+        Args:
+            query:
+                Shape:
+                (batch_size, sequence_length, d_model)
+
+            key:
+                Shape:
+                (batch_size, sequence_length, d_model)
+
+            value:
+                Shape:
+                (batch_size, sequence_length, d_model)
+
+            mask:
+                Optional attention mask.
+
+        Returns:
+            output:
+                (batch_size, sequence_length, d_model)
+
+            attention_weights:
+                (batch_size, num_heads, sequence_length, sequence_length)
+        """
+
+        # Step 1: Linear projections
+        query = self.query_projection(query)
+        key = self.key_projection(key)
+        value = self.value_projection(value)
+
+        # Step 2: Split into multiple heads
+        query = self._split_heads(query)
+        key = self._split_heads(key)
+        value = self._split_heads(value)
+
+        # Step 3: Scaled Dot-Product Attention
+        output, attention_weights = self.attention(
+            query=query,
+            key=key,
+            value=value,
+            mask=mask,
+        )
+
+        # Step 4: Combine attention heads
+        output = self._combine_heads(output)
+
+        # Step 5: Final linear projection
+        output = self.output_projection(output)
+
+        return output, attention_weights

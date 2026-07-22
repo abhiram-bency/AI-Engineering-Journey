@@ -38,3 +38,24 @@ The goal is to understand each component of the architecture by implementing it 
 - [ ] Encoder
 - [ ] Decoder
 - [ ] Complete Transformer
+
+## Progress
+
+### ✅ Completed
+
+- Token Embedding
+- Positional Encoding
+- Scaled Dot-Product Attention
+- Multi-Head Attention
+
+### 🚧 In Progress
+
+- Position-wise Feed Forward Network
+
+### ⏳ Planned
+
+- Residual Connections
+- Layer Normalization
+- Encoder Layer
+- Decoder Layer
+- Complete Transformer

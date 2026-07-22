@@ -3,7 +3,7 @@ import torch
 from src.attention.multi_head_attention import MultiHeadAttention
 
 
-def test_multi_head_attention():
+def test_multi_head_attention_output_shape():
 
     batch_size = 2
     sequence_length = 5
@@ -27,10 +27,28 @@ def test_multi_head_attention():
         value=x,
     )
 
-    print("Input Shape      :", x.shape)
-    print("Output Shape     :", output.shape)
-    print("Attention Shape  :", weights.shape)
+    assert output.shape == (
+        batch_size,
+        sequence_length,
+        d_model,
+    )
+
+    assert weights.shape == (
+        batch_size,
+        num_heads,
+        sequence_length,
+        sequence_length,
+    )
 
 
-if __name__ == "__main__":
-    test_multi_head_attention()
+import pytest
+
+def test_invalid_head_configuration():
+
+    with pytest.raises(ValueError):
+
+        MultiHeadAttention(
+            d_model=510,
+            num_heads=8,
+        )
+

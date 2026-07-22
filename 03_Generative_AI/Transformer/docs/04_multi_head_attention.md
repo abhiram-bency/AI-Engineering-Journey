@@ -106,3 +106,11 @@ Combine
 ---
 
 ## References
+
+1. Vaswani et al.
+   Attention Is All You Need
+   NeurIPS 2017
+
+2. The Annotated Transformer
+
+3. PyTorch Documentation
