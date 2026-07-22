@@ -1,5 +1,20 @@
-__pycache__/
+# Virtual Environment
 .venv/
-.ipynb_checkpoints/
-.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
 *.pyc
+
+# Pytest
+.pytest_cache/
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
