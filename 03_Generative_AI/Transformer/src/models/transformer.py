@@ -22,6 +22,7 @@ from src.layers.positional_encoding import PositionalEncoding
 from src.models.encoder import Encoder
 from src.models.decoder import Decoder
 
+from src.utils.initialization import initialize_transformer
 
 class Transformer(nn.Module):
 
@@ -54,6 +55,8 @@ class Transformer(nn.Module):
             config.d_model,
             config.vocab_size,
         )
+        
+        initialize_transformer(self)
 
     def forward(
         self,
