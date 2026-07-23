@@ -4,11 +4,11 @@ from src.config import TransformerConfig
 from src.models.transformer import Transformer
 
 
-def main():
+def test_transformer_output_shape():
 
     config = TransformerConfig()
 
-    model = Transformer(config)
+    transformer = Transformer(config)
 
     source = torch.randint(
         0,
@@ -22,15 +22,13 @@ def main():
         (2, 6),
     )
 
-    output = model(
+    output = transformer(
         source,
         target,
     )
 
-    print("Source Tokens :", source.shape)
-    print("Target Tokens :", target.shape)
-    print("Output Logits :", output.shape)
-
-
-if __name__ == "__main__":
-    main()
+    assert output.shape == (
+        2,
+        6,
+        config.vocab_size,
+    )
